@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sexionary</title>
+<meta name="theme-color" content="#1a1a2e">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- PANTALLA: INICIO -->
+  <section id="screen-home" class="screen active">
+    <div class="home-wrap">
+      <h1 class="logo">SEXIONARY</h1>
+      <p class="tagline">El juego de las mímicas y adivinanzas</p>
+      <button id="btn-new-game" class="btn btn-primary btn-lg">Nuevo Juego</button>
+      <button id="btn-continue-game" class="btn btn-secondary btn-lg hidden">Continuar Juego</button>
+    </div>
+  </section>
+
+  <!-- PANTALLA: CONFIGURACION -->
+  <section id="screen-setup" class="screen">
+    <div class="setup-wrap">
+      <h2>Configurar Partida</h2>
+
+      <div class="setup-block">
+        <h3>Duración de cada interpretación</h3>
+        <div class="chip-group" id="time-options">
+          <button class="chip" data-time="30">30 seg</button>
+          <button class="chip" data-time="40">40 seg</button>
+          <button class="chip" data-time="50">50 seg</button>
+          <button class="chip" data-time="60">60 seg</button>
+        </div>
+      </div>
+
+      <div class="setup-block">
+        <h3>Cantidad de equipos</h3>
+        <div class="chip-group" id="team-count-options">
+          <button class="chip" data-teams="2">2 equipos</button>
+          <button class="chip" data-teams="3">3 equipos</button>
+          <button class="chip" data-teams="4">4 equipos</button>
+        </div>
+      </div>
+
+      <div class="setup-block">
+        <h3>Nombres de los equipos</h3>
+        <div id="team-names-list" class="team-names-list"></div>
+      </div>
+
+      <div class="setup-actions">
+        <button id="btn-back-home" class="btn btn-ghost">Volver</button>
+        <button id="btn-start-game" class="btn btn-primary" disabled>Comenzar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA: TABLERO / SELECCION DE CATEGORIA -->
+  <section id="screen-board" class="screen">
+    <div class="board-wrap">
+
+      <div class="scoreboard" id="scoreboard"></div>
+
+      <div class="turn-indicator">
+        Turno de: <span id="current-team-name">-</span>
+      </div>
+
+      <h2 class="board-title">Elegí una categoría</h2>
+
+      <div class="category-grid" id="category-grid">
+        <button class="cat-card cat-rojo" data-cat="rojo">
+          <span class="cat-name">Rojo</span>
+          <span class="cat-desc">Personas, personajes y personalidades</span>
+        </button>
+        <button class="cat-card cat-verde" data-cat="verde">
+          <span class="cat-name">Verde</span>
+          <span class="cat-desc">Partes del cuerpo, objetos y lugares</span>
+        </button>
+        <button class="cat-card cat-celeste" data-cat="celeste">
+          <span class="cat-name">Celeste</span>
+          <span class="cat-desc">Verbos, actos y acciones</span>
+        </button>
+        <button class="cat-card cat-naranja" data-cat="naranja">
+          <span class="cat-name">Naranja</span>
+          <span class="cat-desc">Situación difícil o placentera</span>
+        </button>
+      </div>
+
+      <button id="btn-finish-game" class="btn btn-danger btn-block">Finalizar Juego</button>
+    </div>
+  </section>
+
+  <!-- PANTALLA: CARTA / PALABRA -->
+  <section id="screen-card" class="screen">
+    <div class="card-wrap" id="card-wrap">
+      <div class="card-top">
+        <span class="card-cat-label" id="card-cat-label">Categoría</span>
+        <span class="card-team-label" id="card-team-label">Equipo</span>
+      </div>
+
+      <div class="timer-circle" id="timer-circle">
+        <span id="timer-value">30</span>
+      </div>
+
+      <div class="word-display" id="word-display">
+        <span class="word-hint">Preparate...</span>
+      </div>
+
+      <button id="btn-reveal" class="btn btn-primary btn-lg">Mostrar palabra</button>
+
+      <div class="pre-timer-actions hidden" id="pre-timer-actions">
+        <button id="btn-change-word" class="btn btn-ghost hidden">🔄 Cambiar</button>
+        <button id="btn-start-timer" class="btn btn-primary">▶ Arrancar tiempo</button>
+      </div>
+
+      <div class="result-actions hidden" id="result-actions">
+        <button id="btn-correct" class="btn btn-success">✔ Acertó</button>
+        <button id="btn-pass" class="btn btn-warning">➜ Pasar</button>
+        <button id="btn-fail" class="btn btn-danger">✘ Perdió</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA: FIN DE JUEGO -->
+  <section id="screen-end" class="screen">
+    <div class="end-wrap">
+      <h2>¡Juego Finalizado!</h2>
+      <div class="podium" id="podium"></div>
+      <button id="btn-play-again" class="btn btn-primary btn-lg">Jugar de nuevo</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
